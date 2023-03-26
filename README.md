@@ -1,6 +1,3 @@
-# crud-user-html-with-flask
-Um sistema crud em html com uso de flask em seu back end
-
 # CRUD com HTML em Flask
 
 Sistema CRUD HTML desenvolvido em FLASK, com direito a controle de sessão, cadastro, login, painel de admin, edição e remoção de usuarios.
