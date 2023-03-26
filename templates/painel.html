@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Página de Login</title>
+        <!-- Bootstrap CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">Meu Site</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link active" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout" style="color: red;">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Jumbotron -->
+        <div class="jumbotron jumbotron-fluid bg-light text-center py-2 mb-0">
+            <div class="container">
+                <h1 class="display-4">Seja bem vindo! {{username}}</h1>
+                <p class="lead">Painel do site.</p>
+            </div>
+        </div>
+        <!-- Main -->
+        {% if username == 'admin' %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Usuário</th>
+                        <th>Senha</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for u in usuarios %}
+                <tr>
+                    {% if u.username == 'admin' %}
+                        <td><b style="color: red;">{{u.username}}</b></td>
+                        <td><b style="color: red;">{{u.password}}</b></td>
+                        <td>
+                            <!-- <a href="#" style="color: black;">Editar</a> -->
+                            <!-- <a href="#" style="color: black;">Excluir</a> -->
+                            <p></p>
+                            <p></p>
+                        </td>
+                    {% else %}
+                        <td>{{u.username}}</td>
+                        <td>{{u.password}}</td>
+                        <td>
+
+                            <a href="/edit/{{u.id}}">Editar</a>
+                            <a href="/delete/{{u.id}}">Excluir</a>
+                        </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        <!-- Bootstrap CDN -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
